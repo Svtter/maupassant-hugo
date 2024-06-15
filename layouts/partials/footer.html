@@ -76,7 +76,7 @@
             })();
         </script>
     {{- end -}}
-    
+
     <!-- sequence必须要在flow加载之后，否则sequence渲染不成功，原因待分析 -->
     <!-- js-sequence-diagrams -->
     {{- if and (or .Params.sequenceDiagrams.enable (and .Site.Params.sequenceDiagrams.enable (ne .Params.sequenceDiagrams.enable false))) (or .IsPage .IsHome) -}}
@@ -112,7 +112,7 @@
         })();
         </script>
     {{- end -}}
-    
+
     <script type="text/javascript">
         window.MathJax = {
             tex2jax: {
@@ -122,7 +122,7 @@
             };
     </script>
     <script src='//{{ .Site.Params.cdnJsSite | default $defaultCdnJsSite }}/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-    
+
     {{- if .Site.Params.fancybox -}}
         <script src="//{{ .Site.Params.cdnJsSite | default $defaultCdnJsSite }}/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     {{- end -}}
@@ -130,11 +130,7 @@
 
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src='{{ "js/totop.js?v=0.0.0" | relURL }}' async=""></script>
-{{- if hasPrefix .Site.GoogleAnalytics "UA-" -}}
-    {{ template "_internal/google_analytics_async.html" . }}
-{{- else if hasPrefix .Site.GoogleAnalytics "G-" -}}
-    {{ template "_internal/google_analytics.html" . }}
-{{- end -}}
+{{ template "_internal/google_analytics.html" . }}
 
 {{ partial "copy_button" . }}
 
